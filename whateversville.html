@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
+    
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script src="js/lib/phaser.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/goomy.js"></script>
+</head>
+<body>
+
+  <!-- build:js -->
+  <script src="js/mock/fbinstant.6.0.mock.js"></script>
+  <!-- endbuild -->
+
+  <script type="text/javascript">
+    
+    window.onload = function() {
+      game = new Phaser.Game (730, 500, Phaser.CANVAS);
+      game.events = gameEvents;
+      game.state.add('main', mainState);
+      game.state.add('boot', bootState);
+
+      FBInstant.initializeAsync().then(function() {
+
+        // load assets
+        // FBInstant.setLoadingProgress(50)
+        // 100
+
+        FBInstant.startGameAsync().then(function() {
+          // game.state.load('main')
+        });
+      });
+    };
+
+  </script>
+  
+</body>
+</html>
